@@ -1,0 +1,8 @@
+{
+  "error_generic": "Ups! Ein Fehler ist aufgetreten. Versuche es später erneut oder falls der Fehler erneut auftritt kannst du hier Hilfe bekommen: {inviteLink}",
+  "ping_botPing": "Bot Ping",
+  "ping_botPingValue": "Messen...",
+  "ping_wsPing": "WebSocket Ping",
+  "ping_ms": "{ping} ms",
+  "ping_lastRestart": "Letzter Neustart"
+}

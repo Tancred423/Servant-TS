@@ -1,0 +1,8 @@
+{
+  "error_generic": "Oops! An error occured. Please try again later of if this error persists, you can get help here: {inviteLink}",
+  "ping_botPing": "Bot Ping",
+  "ping_botPingValue": "Measuring...",
+  "ping_wsPing": "WebSocket Ping",
+  "ping_ms": "{ping} ms",
+  "ping_lastRestart": "Last restart"
+}
