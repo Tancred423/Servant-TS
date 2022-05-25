@@ -2,8 +2,6 @@
 
 Your Multifunctional Discord Bot
 
-[![Discord Bots](https://top.gg/api/widget/status/436916794796670977.svg)](https://top.gg/bot/436916794796670977)
-
 ![Servant](https://i.imgur.com/MDRt4fA.png)
 
 Greetings master! I am Servant, your multifunctional Discord bot.
