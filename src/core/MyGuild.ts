@@ -65,4 +65,8 @@ export class MyGuild {
   public getDashboardLink(): string {
     return config.linkWebsite + config.pathDashboard + '/' + this.guildId
   }
+
+  public getLeaderboardLink(): string {
+    return config.linkWebsite + config.pathLeaderboard + '/' + this.guildId
+  }
 }
