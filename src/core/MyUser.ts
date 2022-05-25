@@ -1,5 +1,4 @@
 import { User } from 'discord.js'
-import 'dotenv/config'
 import config from '../config.json'
 import { LanguageKeys } from '../Localization/LanguageKeys'
 import { Logger } from '../Logging/Logger'

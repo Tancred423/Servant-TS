@@ -1,5 +1,4 @@
 import { ApplicationCommandDataResolvable, Guild } from 'discord.js'
-import 'dotenv/config'
 import config from '../config.json'
 import { CommandHelper } from '../Helpers/CommandHelper'
 import { LanguageKeys } from '../Localization/LanguageKeys'

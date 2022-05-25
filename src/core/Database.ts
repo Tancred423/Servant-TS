@@ -1,3 +1,4 @@
+import 'dotenv/config'
 import { RowDataPacket } from 'mysql2'
 import * as mysql from 'mysql2/promise'
 import { Pool } from 'mysql2/promise'
