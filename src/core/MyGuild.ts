@@ -1,7 +1,8 @@
+import { ApplicationCommandDataResolvable, Guild } from 'discord.js'
 import 'dotenv/config'
-import { LanguageKeys } from '../Localization/LanguageKeys'
-import { Guild } from 'discord.js'
+import config from '../config.json'
 import { CommandHelper } from '../Helpers/CommandHelper'
+import { LanguageKeys } from '../Localization/LanguageKeys'
 import { Logger } from '../Logging/Logger'
 import { LogTypes } from '../Logging/LogTypes'
 import { Database } from './Database'
@@ -15,39 +16,54 @@ export class MyGuild {
     this.guildId = guild.id
   }
 
-  async getLanguageKey(): Promise<LanguageKeys> {
+  public async getLanguageKey(): Promise<LanguageKeys> {
     const sql = `SELECT language_code
                  FROM   guilds
                  WHERE  guild_id=${Database.escape(this.guildId)}`
 
-    let key = process.env.DEFAULT_LANGUAGE as keyof typeof LanguageKeys
+    let key = config.defaultLanguage as keyof typeof LanguageKeys
 
     try {
       const res = await Database.query(sql)
-      const keyString = res['language_code'] as string
 
-      if (typeof keyString === 'string')
-        key = keyString.toUpperCase() as keyof typeof LanguageKeys
+      if (res.length > 0) {
+        const keyString = res['language_code'] as string
+
+        if (typeof keyString === 'string')
+          key = keyString.toUpperCase() as keyof typeof LanguageKeys
+      }
     } catch (error: any) {
-      Logger.log(LogTypes.ERROR, error.message, error.code)
+      Logger.log(LogTypes.ERROR, 1653500291, error.message)
     }
 
     return LanguageKeys[key]
   }
 
-  async updateCommands() {
-    const languageKey = this.getLanguageKey()
+  public async updateCommands(): Promise<void> {
+    const languageKey = await this.getLanguageKey()
 
     try {
       const applicationCommandDataResolvables =
         CommandHelper.getApplicationCommandDataResolvables(
-          await this.getLanguageKey()
-        )
+          languageKey
+        ) as ApplicationCommandDataResolvable[]
 
       await this.guild.commands.set(applicationCommandDataResolvables)
-      Logger.log(LogTypes.SUCCESS, `${this.guild.name}: Updated successfully`)
+      Logger.log(
+        LogTypes.SUCCESS,
+        1653500322,
+        `${this.guild.name}: Updated successfully`
+      )
     } catch (error: any) {
-      Logger.log(LogTypes.ERROR, `${this.guild.name}: ${error.message}`)
+      Logger.log(
+        LogTypes.ERROR,
+        1653500325,
+        `${this.guild.name}: ${error.message}`
+      )
     }
+  }
+
+  public getDashboardLink(): string {
+    return config.linkWebsite + config.pathDashboard + '/' + this.guildId
   }
 }

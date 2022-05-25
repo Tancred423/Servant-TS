@@ -4,5 +4,6 @@
   "ping_botPingValue": "Messen...",
   "ping_wsPing": "WebSocket Ping",
   "ping_ms": "{ping} ms",
-  "ping_lastRestart": "Letzter Neustart"
+  "ping_lastRestart": "Letzter Neustart",
+  "dashboard_label": "Dashboard: {guildName}"
 }

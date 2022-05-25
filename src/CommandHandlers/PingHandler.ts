@@ -1,8 +1,8 @@
 import { CommandInteraction, MessageEmbed } from 'discord.js'
 import moment from 'moment'
-import { Replacement } from '../Localization/Replacement'
-import { UserProperties } from '../core/UserPropterties'
 import { Bot } from '../core/Bot'
+import { UserProperties } from '../core/UserPropterties'
+import { Replacement } from '../Localization/Replacement'
 
 export class PingHandler {
   public static readonly NAME = 'ping'
@@ -31,7 +31,7 @@ export class PingHandler {
 
     const start = moment()
 
-    this.interaction.reply({ embeds: [embed] }).then((_) => {
+    this.interaction.reply({ ephemeral: true, embeds: [embed] }).then((_) => {
       embed.fields[0].value = t(
         'ping_ms',
         new Replacement('ping', moment().diff(start, 'milliseconds'))

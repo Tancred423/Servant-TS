@@ -1,29 +1,37 @@
-import { MyClientUser } from './MyClientUser'
 import { Client, CommandInteraction } from 'discord.js'
+import 'dotenv/config'
+import config from '../config.json'
+import { CommandHelper } from '../Helpers/CommandHelper'
+import { Replacement } from '../Localization/Replacement'
+import { Translator } from '../Localization/Translator'
 import { Logger } from '../Logging/Logger'
 import { LogTypes } from '../Logging/LogTypes'
+import { MyClientUser } from './MyClientUser'
 import { MyGuild } from './MyGuild'
-import { UserProperties } from './UserPropterties'
-import { CommandHandler } from '../CommandHandlers/CommandHandler'
-import { Replacement } from '../Localization/Replacement'
 import { MyUser } from './MyUser'
-import { Translator } from '../Localization/Translator'
+import { UserProperties } from './UserPropterties'
 
 export class EventHandler {
   static async onReady(client: Client<true>) {
     const myClientUser = new MyClientUser(client.user)
 
-    Logger.log(LogTypes.NORMAL, 'Starting up...')
+    Logger.log(LogTypes.NORMAL, 1653500331, 'Starting up...')
     myClientUser.setPresenceLoading()
 
     for (const guild of client.guilds.cache) {
-      if (process.env.UPDATE_COMMANDS_ON_STARTUP)
+      if (config.updateCommandsOnStartup)
         await new MyGuild(guild[1]).updateCommands()
-      else Logger.log(LogTypes.DEVELOPMENT, `${guild[1].name}: Skipped`)
+      else
+        Logger.log(
+          LogTypes.DEVELOPMENT,
+          1653500335,
+          `${guild[1].name}: Skipped`
+        )
     }
 
     Logger.log(
       LogTypes.NORMAL,
+      1653500377,
       `${client.user.username} ready!\nGuilds: ${client.guilds.cache.size}`
     )
     myClientUser.setPresenceOnline()
@@ -36,9 +44,9 @@ export class EventHandler {
     const userProperties = new UserProperties(languageKey, t)
 
     try {
-      CommandHandler.handle(interaction, commandName, userProperties)
+      CommandHelper.handle(interaction, commandName, userProperties)
     } catch (error: any) {
-      Logger.log(LogTypes.ERROR, error.message)
+      Logger.log(LogTypes.ERROR, 1653500380, error.message)
 
       const reply = {
         ephemeral: true,
