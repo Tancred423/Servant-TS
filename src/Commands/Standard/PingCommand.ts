@@ -1,10 +1,10 @@
 import { CommandInteraction, MessageEmbed } from 'discord.js'
 import moment from 'moment'
-import { Bot } from '../core/Bot'
-import { UserProperties } from '../core/UserPropterties'
-import { Replacement } from '../Localization/Replacement'
+import { Bot } from '../../core/Bot'
+import { UserProperties } from '../../core/UserPropterties'
+import { Replacement } from '../../Localization/Replacement'
 
-export class PingHandler {
+export class PingCommand {
   public static readonly NAME = 'ping'
 
   constructor(

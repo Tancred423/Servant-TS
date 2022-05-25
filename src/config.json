@@ -2,5 +2,6 @@
   "updateCommandsOnStartup": false,
   "defaultLanguage": "EN_GB",
   "linkWebsite": "https://servant.gg",
-  "pathDashboard": "/dashboard"
+  "pathDashboard": "/dashboard",
+  "pathLeaderboard": "/leaderboard"
 }

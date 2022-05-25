@@ -1,10 +1,10 @@
 import { CommandInteraction, MessageActionRow, MessageButton } from 'discord.js'
-import { MyGuild } from '../core/MyGuild'
-import { UserProperties } from '../core/UserPropterties'
-import { Replacement } from '../Localization/Replacement'
-import { Emojis } from '../Utility/Emojis'
+import { MyGuild } from '../../core/MyGuild'
+import { UserProperties } from '../../core/UserPropterties'
+import { Replacement } from '../../Localization/Replacement'
+import { Emojis } from '../../Utility/Emojis'
 
-export class DashboardHandler {
+export class DashboardCommand {
   public static readonly NAME = 'dashboard'
 
   constructor(

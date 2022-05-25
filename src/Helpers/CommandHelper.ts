@@ -1,8 +1,9 @@
 import { SlashCommandBuilder } from '@discordjs/builders'
 import { RESTPostAPIApplicationCommandsJSONBody } from 'discord-api-types/v9'
 import { CommandInteraction } from 'discord.js'
-import { DashboardHandler } from '../CommandHandlers/DashboardHandler'
-import { PingHandler } from '../CommandHandlers/PingHandler'
+import { DashboardCommand } from '../Commands/Standard/DashboardCommand'
+import { LeaderboardCommand } from '../Commands/Standard/LeaderboardCommand'
+import { PingCommand } from '../Commands/Standard/PingCommand'
 import { UserProperties } from '../core/UserPropterties'
 import { LanguageKeys } from '../Localization/LanguageKeys'
 
@@ -13,12 +14,16 @@ export class CommandHelper {
     userProperties: UserProperties
   ): void {
     switch (commandName.toLowerCase()) {
-      case PingHandler.NAME:
-        new PingHandler(interaction, userProperties).execute()
+      case PingCommand.NAME:
+        new PingCommand(interaction, userProperties).execute()
         break
 
-      case DashboardHandler.NAME:
-        new DashboardHandler(interaction, userProperties).execute()
+      case DashboardCommand.NAME:
+        new DashboardCommand(interaction, userProperties).execute()
+        break
+
+      case LeaderboardCommand.NAME:
+        new LeaderboardCommand(interaction, userProperties).execute()
         break
 
       default:
@@ -30,13 +35,22 @@ export class CommandHelper {
     languageKey: LanguageKeys
   ): RESTPostAPIApplicationCommandsJSONBody[] {
     return [
+      // Standard
       new SlashCommandBuilder()
         .setName('ping')
-        .setDescription('Shows latencies and uptime')
+        .setDescription('[Standard] Shows latencies and uptime')
         .toJSON(),
       new SlashCommandBuilder()
         .setName('dashboard')
-        .setDescription('Provides a link to the dashboard of this server')
+        .setDescription(
+          '[Standard] Provides a link to the dashboard of this server'
+        )
+        .toJSON(),
+      new SlashCommandBuilder()
+        .setName('leaderboard')
+        .setDescription(
+          '[Standard] Provides a link to the leaderboard of this server'
+        )
         .toJSON(),
     ] // Todo: Db Connection
   }
