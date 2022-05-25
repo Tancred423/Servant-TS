@@ -1,5 +1,5 @@
-import 'dotenv/config'
 import { Client, Intents } from 'discord.js'
+import 'dotenv/config'
 
 export class Bot {
   private static INTENTS = [
@@ -14,7 +14,7 @@ export class Bot {
   public static getClient(): Client {
     if (!(Bot.client instanceof Client)) {
       Bot.client = new Client({ intents: Bot.INTENTS })
-      Bot.client.login(process.env.DISCORD_TOKEN)
+      Bot.client.login(process.env['DISCORD_TOKEN'])
     }
 
     return Bot.client

@@ -1,6 +1,6 @@
-import { LanguageKeys } from './LanguageKeys'
 import deDe from './LanguageFiles/de_de.json'
 import enGb from './LanguageFiles/en_gb.json'
+import { LanguageKeys } from './LanguageKeys'
 import { Replacement } from './Replacement'
 
 export class Translator {

@@ -10,9 +10,16 @@ export class Logger {
     return `[${LogTypes[logType]}] `
   }
 
-  public static log(logType: LogTypes, arg: any, ...args: any[]) {
+  private static getId(id: number): string {
+    return `[${id}] `
+  }
+
+  public static log(logType: LogTypes, id: number, arg: any, ...args: any[]) {
     console.log(
-      this.getCurrentTimestamp() + this.getLogTypePrefix(logType) + arg,
+      this.getCurrentTimestamp() +
+        this.getLogTypePrefix(logType) +
+        this.getId(id) +
+        arg,
       ...args
     )
   }
