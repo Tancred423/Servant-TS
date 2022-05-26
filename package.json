@@ -6,11 +6,9 @@
   "scripts": {
     "clean": "rimraf dist",
     "build": "tsc",
-    "start": "node dist/app.js",
-    "watch:build": "tsc --watch",
-    "watch:app": "nodemon './dist/app.js' --watch './dist'",
-    "watch:start": "npm-run-all clean build --parallel watch:build watch:app --print-label",
-    "s": "npm-run-all clean build start"
+    "cb": "npm-run-all clean build",
+    "watch": "tsc --watch",
+    "start": "node dist/app.js"
   },
   "keywords": [
     "bot",
