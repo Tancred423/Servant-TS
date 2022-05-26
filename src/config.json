@@ -1,6 +1,7 @@
 {
   "updateCommandsOnStartup": false,
   "defaultLanguage": "EN_GB",
+  "defautColor": "#5865F2",
   "linkWebsite": "https://servant.gg",
   "pathDashboard": "/dashboard",
   "pathLeaderboard": "/leaderboard"
