@@ -1,7 +1,35 @@
 import { Client, Intents } from 'discord.js'
 import 'dotenv/config'
+import { CommandDto } from '../Commands/CommandDto'
+import { DashboardCommand } from '../Commands/Standard/DashboardCommand'
+import { DonateCommand } from '../Commands/Standard/DonateCommand'
+import { LeaderboardCommand } from '../Commands/Standard/LeaderboardCommand'
+import { PingCommand } from '../Commands/Standard/PingCommand'
+import { LanguageKeys } from '../Localization/LanguageKeys'
+import { Translator } from '../Localization/Translator'
 
 export class Bot {
+  public static commands = new Map<LanguageKeys, CommandDto[]>()
+
+  public static initializeCommands(): void {
+    for (const languageKeyString in LanguageKeys) {
+      const languageKey =
+        LanguageKeys[languageKeyString as keyof typeof LanguageKeys]
+      const t = Translator.getFunction(languageKey)
+
+      // Standard
+      Bot.commands.set(languageKey, [
+        new CommandDto(DashboardCommand.getData(t), DashboardCommand.execute),
+        new CommandDto(DonateCommand.getData(t), DonateCommand.execute),
+        new CommandDto(
+          LeaderboardCommand.getData(t),
+          LeaderboardCommand.execute
+        ),
+        new CommandDto(PingCommand.getData(t), PingCommand.execute),
+      ])
+    }
+  }
+
   private static INTENTS = [
     Intents.FLAGS.GUILDS,
     Intents.FLAGS.GUILD_MESSAGES,

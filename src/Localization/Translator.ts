@@ -1,12 +1,12 @@
-import deDe from './LanguageFiles/de_de.json'
-import enGb from './LanguageFiles/en_gb.json'
+import de_de from './LanguageFiles/de_de.json'
+import en_gb from './LanguageFiles/en_gb.json'
 import { LanguageKeys } from './LanguageKeys'
 import { Replacement } from './Replacement'
 
 export class Translator {
-  private static languageFiles = new Map<LanguageKeys, any>([
-    [LanguageKeys.DE_DE, deDe],
-    [LanguageKeys.EN_GB, enGb],
+  private static languageFiles = new Map<string, any>([
+    [LanguageKeys.DE_DE, de_de],
+    [LanguageKeys.EN_GB, en_gb],
   ])
 
   private languageKey: LanguageKeys

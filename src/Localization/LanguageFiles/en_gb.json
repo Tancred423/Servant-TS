@@ -1,10 +1,42 @@
 {
   "error_generic": "Oops! An error occured. Please try again later of if this error persists, you can get help here: {inviteLink}",
+
+  "dashboard_label": "Dashboard: {guildName}",
+  "dashboard_clickHere": "Click here",
+
+  "donate_title": "Support Servant",
+  "donate_description": "As a Servant-Supporter you can choose a custom color for embed messages and personalize your profile with a background!\nThere are three ways to become a Servant-Supporter:",
+  "donate_patreonTitle": "Patreon: Subscription",
+  "donate_patreonDescription": "Price: Only $1 / month!\nDuration: As long as you pledge.",
+  "donate_paypalTitle": "PayPal: Donation",
+  "donate_paypalDescription": "Price: Only $5 (in total)\nDuration: Lifetime\n**Please provide your Discord Name#1234!**",
+  "donate_boostTitle": "Support Server: Server Boost",
+  "donate_boostDescription": "Price: FREE\nDuration: As long as you boost.",
+  "donate_footer": "You have to join the support server in order to receive your rewards.",
+  "donate_button_patreon": "Patreon",
+  "donate_button_paypal": "PayPal",
+  "donate_button_boost": "Support Server",
+
+  "leaderboard_label": "Leaderboard: {guildName}",
+  "leaderboard_clickHere": "Click here",
+
   "ping_botPing": "Bot Ping",
   "ping_botPingValue": "Measuring...",
   "ping_wsPing": "WebSocket Ping",
   "ping_ms": "{ping} ms",
   "ping_lastRestart": "Last restart",
-  "dashboard_label": "Dashboard: {guildName}",
-  "leaderboard_label": "Leaderboard: {guildName}"
+
+  "command_category_standard": "Standard",
+
+  "command_name_dashboard": "dashboard",
+  "command_text_dashboard": "Provides a link to the dashboard of this server.",
+
+  "command_name_donate": "donate",
+  "command_text_donate": "Learn how to support Servant.",
+
+  "command_name_leaderboard": "leaderboard",
+  "command_text_leaderboard": "Provides a link to the leaderboard of this server.",
+
+  "command_name_ping": "ping",
+  "command_text_ping": "Shows latencies and uptime."
 }

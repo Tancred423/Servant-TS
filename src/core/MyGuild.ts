@@ -1,9 +1,9 @@
 import { ApplicationCommandDataResolvable, Guild } from 'discord.js'
 import config from '../config.json'
-import { CommandHelper } from '../Helpers/CommandHelper'
 import { LanguageKeys } from '../Localization/LanguageKeys'
 import { Logger } from '../Logging/Logger'
 import { LogTypes } from '../Logging/LogTypes'
+import { Bot } from './Bot'
 import { Database } from './Database'
 
 export class MyGuild {
@@ -39,15 +39,26 @@ export class MyGuild {
   }
 
   public async updateCommands(): Promise<void> {
-    const languageKey = await this.getLanguageKey()
-
     try {
-      const applicationCommandDataResolvables =
-        CommandHelper.getApplicationCommandDataResolvables(
-          languageKey
-        ) as ApplicationCommandDataResolvable[]
+      const languageKey = await this.getLanguageKey()
 
-      await this.guild.commands.set(applicationCommandDataResolvables)
+      const commandDtos = Bot.commands.get(languageKey)
+      if (!commandDtos)
+        throw new Error(
+          'Bot commands null for guild ' +
+            this.guild.name +
+            ' and language key ' +
+            languageKey
+        )
+
+      const resolvables: ApplicationCommandDataResolvable[] = []
+
+      commandDtos.forEach((commandDto) => {
+        resolvables.push(commandDto.data as ApplicationCommandDataResolvable)
+      })
+
+      await this.guild.commands.set(resolvables)
+
       Logger.log(
         LogTypes.SUCCESS,
         1653500322,

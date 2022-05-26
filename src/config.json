@@ -4,5 +4,8 @@
   "defautColor": "#5865F2",
   "linkWebsite": "https://servant.gg",
   "pathDashboard": "/dashboard",
-  "pathLeaderboard": "/leaderboard"
+  "pathLeaderboard": "/leaderboard",
+  "linkPatreon": "https://patreon.com/tancred",
+  "linkPaypal": "https://paypal.me/servantdiscord",
+  "linkSupportServer": "https://support.servant.gg"
 }
