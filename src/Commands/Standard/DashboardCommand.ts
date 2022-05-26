@@ -19,16 +19,7 @@ export class DashboardCommand {
     interaction: CommandInteraction,
     defaultVariables: DefaultVariables
   ): Promise<void> {
-    const {
-      client,
-      user,
-      myUser,
-      userLanguageKey,
-      t,
-      guild,
-      myGuild,
-      guildLanguageKey,
-    } = defaultVariables
+    const { guild, myGuild, t } = defaultVariables
 
     interaction.reply({
       ephemeral: true,

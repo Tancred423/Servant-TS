@@ -1,6 +1,7 @@
 import { ApplicationCommandDataResolvable, Guild } from 'discord.js'
 import config from '../config.json'
 import { LanguageKeys } from '../Localization/LanguageKeys'
+import { Translator } from '../Localization/Translator'
 import { Logger } from '../Logging/Logger'
 import { LogTypes } from '../Logging/LogTypes'
 import { Bot } from './Bot'
@@ -15,7 +16,11 @@ export class MyGuild {
     this.guildId = guild.id
   }
 
-  public async getLanguageKey(): Promise<LanguageKeys> {
+  async getTranslatorFunction(languageKey: LanguageKeys): Promise<Function> {
+    return Translator.getFunction(languageKey)
+  }
+
+  async getLanguageKey(): Promise<LanguageKeys> {
     const sql = `SELECT language_code
                  FROM   guilds
                  WHERE  guild_id=${Database.escape(this.guildId)}`
@@ -25,14 +30,13 @@ export class MyGuild {
     try {
       const res = await Database.query(sql)
 
-      if (res.length > 0) {
+      if (typeof res === 'object' && res.hasOwnProperty('language_code')) {
         const keyString = res['language_code'] as string
-
         if (typeof keyString === 'string')
           key = keyString.toUpperCase() as keyof typeof LanguageKeys
       }
     } catch (error: any) {
-      Logger.log(LogTypes.ERROR, 1653500291, error.message)
+      Logger.log(LogTypes.ERROR, 1653568904, error.message)
     }
 
     return LanguageKeys[key]

@@ -8,10 +8,10 @@ export interface DefaultVariables {
   user: User
   myUser: MyUser
   userLanguageKey: LanguageKeys
-  t: Function
   guild: Guild
   myGuild: MyGuild
   guildLanguageKey: LanguageKeys
+  t: Function
 }
 
 export class CommandHelper {
@@ -22,20 +22,20 @@ export class CommandHelper {
     const user = interaction.user
     const myUser = new MyUser(user)
     const userLanguageKey = await myUser.getLanguageKey()
-    const t = await myUser.getTranslatorFunction(userLanguageKey)
     const guild = interaction.guild!!
     const myGuild = new MyGuild(guild)
     const guildLanguageKey = await myGuild.getLanguageKey()
+    const t = await myGuild.getTranslatorFunction(guildLanguageKey)
 
     return {
       client,
       user,
       myUser,
       userLanguageKey,
-      t,
       guild,
       myGuild,
       guildLanguageKey,
+      t,
     }
   }
 }

@@ -19,16 +19,7 @@ export class PingCommand {
     interaction: CommandInteraction,
     defaultVariables: DefaultVariables
   ): Promise<void> {
-    const {
-      client,
-      user,
-      myUser,
-      userLanguageKey,
-      t,
-      guild,
-      myGuild,
-      guildLanguageKey,
-    } = defaultVariables
+    const { client, myUser, t } = defaultVariables
 
     const embed = new MessageEmbed()
       .setColor(await myUser.getColor())
