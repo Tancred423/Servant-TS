@@ -12,7 +12,7 @@ export class DashboardCommand {
     private userProperties: UserProperties
   ) {}
 
-  execute(): void {
+  async execute(): Promise<void> {
     const t = this.userProperties.translate
     const guild = this.interaction.guild!!
     const myGuild = new MyGuild(guild)
