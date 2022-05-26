@@ -1,25 +1,29 @@
+import { SlashCommandBuilder } from '@discordjs/builders'
+import { RESTPostAPIApplicationCommandsJSONBody } from 'discord-api-types/v9'
 import { CommandInteraction, MessageActionRow, MessageButton } from 'discord.js'
-import { MyGuild } from '../../core/MyGuild'
-import { UserProperties } from '../../core/UserPropterties'
+import { DefaultVariables } from '../../Helpers/CommandHelper'
 import { Replacement } from '../../Localization/Replacement'
 import { Emojis } from '../../Utility/Emojis'
 
 export class LeaderboardCommand {
-  public static readonly NAME = 'leaderboard'
+  public static getData(t: Function): RESTPostAPIApplicationCommandsJSONBody {
+    return new SlashCommandBuilder()
+      .setName(t('command_name_leaderboard'))
+      .setDescription(
+        `[${t('command_category_standard')}] ${t('command_text_leaderboard')}`
+      )
+      .toJSON()
+  }
 
-  constructor(
-    private interaction: CommandInteraction,
-    private userProperties: UserProperties
-  ) {}
+  public static async execute(
+    interaction: CommandInteraction,
+    defaultVariables: DefaultVariables
+  ): Promise<void> {
+    const { guild, myGuild, t } = defaultVariables
 
-  async execute(): Promise<void> {
-    const t = this.userProperties.translate
-    const guild = this.interaction.guild!!
-    const myGuild = new MyGuild(guild)
-
-    this.interaction.reply({
+    interaction.reply({
       ephemeral: true,
-      content: '👇 Click here',
+      content: `${Emojis.POINT_DOWN} ${t('leaderboard_clickHere')}`,
       components: [
         new MessageActionRow().addComponents(
           new MessageButton()

@@ -1,6 +1,7 @@
 import { ColorResolvable, User } from 'discord.js'
 import config from '../config.json'
 import { LanguageKeys } from '../Localization/LanguageKeys'
+import { Translator } from '../Localization/Translator'
 import { Logger } from '../Logging/Logger'
 import { LogTypes } from '../Logging/LogTypes'
 import { Database } from './Database'
@@ -12,6 +13,10 @@ export class MyUser {
   constructor(user: User) {
     this.user = user
     this.userId = user.id
+  }
+
+  async getTranslatorFunction(languageKey: LanguageKeys): Promise<Function> {
+    return Translator.getFunction(languageKey)
   }
 
   async getLanguageKey(): Promise<LanguageKeys> {

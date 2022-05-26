@@ -1,22 +1,25 @@
+import { SlashCommandBuilder } from '@discordjs/builders'
+import { RESTPostAPIApplicationCommandsJSONBody } from 'discord-api-types/v9'
 import { CommandInteraction, MessageEmbed } from 'discord.js'
 import moment from 'moment'
-import { Bot } from '../../core/Bot'
-import { MyUser } from '../../core/MyUser'
-import { UserProperties } from '../../core/UserPropterties'
+import { DefaultVariables } from '../../Helpers/CommandHelper'
 import { Replacement } from '../../Localization/Replacement'
 
 export class PingCommand {
-  public static readonly NAME = 'ping'
+  public static getData(t: Function): RESTPostAPIApplicationCommandsJSONBody {
+    return new SlashCommandBuilder()
+      .setName(t('command_name_ping'))
+      .setDescription(
+        `[${t('command_category_standard')}] ${t('command_text_ping')}`
+      )
+      .toJSON()
+  }
 
-  constructor(
-    private interaction: CommandInteraction,
-    private userProperties: UserProperties
-  ) {}
-
-  async execute(): Promise<void> {
-    const t = this.userProperties.translate
-    const client = Bot.getClient()
-    const myUser = new MyUser(this.interaction.user)
+  public static async execute(
+    interaction: CommandInteraction,
+    defaultVariables: DefaultVariables
+  ): Promise<void> {
+    const { client, myUser, t } = defaultVariables
 
     const embed = new MessageEmbed()
       .setColor(await myUser.getColor())
@@ -34,13 +37,13 @@ export class PingCommand {
 
     const start = moment()
 
-    this.interaction.reply({ ephemeral: true, embeds: [embed] }).then((_) => {
+    interaction.reply({ ephemeral: true, embeds: [embed] }).then((_) => {
       embed.fields[0].value = t(
         'ping_ms',
         new Replacement('ping', moment().diff(start, 'milliseconds'))
       )
 
-      this.interaction.editReply({
+      interaction.editReply({
         embeds: [embed],
       })
     })

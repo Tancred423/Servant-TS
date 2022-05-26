@@ -3,6 +3,7 @@ import { Bot } from './core/Bot'
 import { EventHandler } from './core/EventHandler'
 
 const client = Bot.getClient()
+Bot.initializeCommands()
 
 client.on('ready', async (client: Client<true>) => {
   EventHandler.onReady(client)

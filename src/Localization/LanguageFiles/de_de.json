@@ -1,10 +1,42 @@
 {
   "error_generic": "Ups! Ein Fehler ist aufgetreten. Versuche es später erneut oder falls der Fehler erneut auftritt kannst du hier Hilfe bekommen: {inviteLink}",
+
+  "dashboard_label": "Dashboard: {guildName}",
+  "dashboard_clickHere": "Hier klicken",
+
+  "donate_title": "Servant unterstützen",
+  "donate_description": "Als Servant-Unterstützer kannst du dir eine beliebige Farbe für eingebettete Nachrichten aussuchen und dein Profil mit einem eigenen Hintergrundbild versehen!\nEs gibt drei Wege ein Servant-Unterstützer zu werden:",
+  "donate_patreonTitle": "Patreon: Abonnement",
+  "donate_patreonDescription": "Preis: Nur $1 / Monat!\nLaufzeit: So lange du untersützt.",
+  "donate_paypalTitle": "PayPal: Spende",
+  "donate_paypalDescription": "Preis: Nur $5 (insgesamt)\nLaufzeit: Für immer\n**Bitte gib deinen Discord Namen#1234 mit an!**",
+  "donate_boostTitle": "Support-Server: Server Boost",
+  "donate_boostDescription": "Preis: GRATIS\nLaufzeit: So lange du boostest.",
+  "donate_footer": "Du musst dem Support-Server beitreten, um deine Belohnungen zu erhalten.",
+  "donate_button_patreon": "Patreon",
+  "donate_button_paypal": "PayPal",
+  "donate_button_boost": "Support-Server",
+
+  "leaderboard_label": "Rangliste: {guildName}",
+  "leaderboard_clickHere": "Hier klicken",
+
   "ping_botPing": "Bot Ping",
   "ping_botPingValue": "Messen...",
   "ping_wsPing": "WebSocket Ping",
   "ping_ms": "{ping} ms",
   "ping_lastRestart": "Letzter Neustart",
-  "dashboard_label": "Dashboard: {guildName}",
-  "leaderboard_label": "Rangliste: {guildName}"
+
+  "command_category_standard": "Standart",
+
+  "command_name_dashboard": "dashboard",
+  "command_text_dashboard": "Link zu dem Dashboards dieses Servers.",
+
+  "command_name_donate": "spenden",
+  "command_text_donate": "Siehe Möglichkeiten Servant zu unterstützen.",
+
+  "command_name_leaderboard": "rangliste",
+  "command_text_leaderboard": "Link zu der Rangliste dieses Servers.",
+
+  "command_name_ping": "ping",
+  "command_text_ping": "Zeigt Ping und Uptime."
 }

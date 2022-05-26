@@ -2,13 +2,11 @@ import { Client, CommandInteraction } from 'discord.js'
 import config from '../config.json'
 import { CommandHelper } from '../Helpers/CommandHelper'
 import { Replacement } from '../Localization/Replacement'
-import { Translator } from '../Localization/Translator'
 import { Logger } from '../Logging/Logger'
 import { LogTypes } from '../Logging/LogTypes'
+import { Bot } from './Bot'
 import { MyClientUser } from './MyClientUser'
 import { MyGuild } from './MyGuild'
-import { MyUser } from './MyUser'
-import { UserProperties } from './UserPropterties'
 
 export class EventHandler {
   static async onReady(client: Client<true>) {
@@ -38,24 +36,27 @@ export class EventHandler {
 
   static async onCommand(interaction: CommandInteraction) {
     const { commandName } = interaction
-    const languageKey = await new MyUser(interaction.user).getLanguageKey()
-    const t = Translator.getFunction(languageKey)
-    const userProperties = new UserProperties(languageKey, t)
+    const defaultVariables = await CommandHelper.getDefaultVariables(
+      interaction
+    )
 
     try {
-      CommandHelper.handle(interaction, commandName, userProperties)
+      const commands = Bot.commands.get(defaultVariables.guildLanguageKey)
+      const command = commands?.find(
+        (element) => element.data.name === commandName
+      )
+
+      await command?.execute(interaction, defaultVariables)
     } catch (error: any) {
       Logger.log(LogTypes.ERROR, 1653500380, error.message)
 
-      const reply = {
+      interaction.reply({
         ephemeral: true,
-        content: t(
+        content: defaultVariables.t(
           'error_generic',
           new Replacement('inviteLink', '<https://support.servant.gg/>')
         ),
-      }
-
-      interaction.reply(reply)
+      })
     }
   }
 }
