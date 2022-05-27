@@ -37,7 +37,7 @@ export class Translator {
     return translation
   }
 
-  static getFunction(languageKey: LanguageKeys): ITranslatorFunction {
+  public static getFunction(languageKey: LanguageKeys): ITranslatorFunction {
     const translator = new Translator(languageKey)
     return translator.t.bind(translator)
   }
