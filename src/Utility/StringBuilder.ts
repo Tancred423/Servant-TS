@@ -5,6 +5,11 @@ export class StringBuilder {
     this.string = string
   }
 
+  public set(string: string): StringBuilder {
+    this.string = string
+    return this
+  }
+
   public append(string: string): StringBuilder {
     this.string += string
     return this

@@ -5,6 +5,7 @@ import { LanguageKeys } from '../Localization/LanguageKeys'
 import { Translator } from '../Localization/Translator'
 import { Logger } from '../Logging/Logger'
 import { LogTypes } from '../Logging/LogTypes'
+import { Comparators, QueryBuilder } from '../Utility/QueryBuilder'
 import { Database } from './Database'
 
 export class MyUser {
@@ -23,9 +24,11 @@ export class MyUser {
   }
 
   public async getLanguageKey(): Promise<LanguageKeys> {
-    const sql = `SELECT language_code
-                 FROM   users
-                 WHERE  user_id=${Database.escape(this.userId)}`
+    const sql = new QueryBuilder()
+      .select('language_code')
+      .from('users')
+      .where('user_id', Comparators.EQUALS, this.userId)
+      .build()
 
     let key = config.defaultLanguage as keyof typeof LanguageKeys
 
@@ -49,9 +52,11 @@ export class MyUser {
   }
 
   public async getColorCode(): Promise<string> {
-    const sql = `SELECT color_code
-                 FROM   users
-                 WHERE  user_id=${Database.escape(this.userId)}`
+    const sql = new QueryBuilder()
+      .select('color_code')
+      .from('users')
+      .where('user_id', Comparators.EQUALS, this.userId)
+      .build()
 
     let color = config.defautColor
 
