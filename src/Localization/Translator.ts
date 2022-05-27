@@ -1,4 +1,5 @@
 import { IReplacement } from './IReplacement'
+import { ITranslatorFunction } from './ITranslatorFunction'
 import de_de from './LanguageFiles/de_de.json'
 import en_gb from './LanguageFiles/en_gb.json'
 import { LanguageKeys } from './LanguageKeys'
@@ -36,7 +37,7 @@ export class Translator {
     return translation
   }
 
-  public static getFunction(languageKey: LanguageKeys): Function {
+  public static getFunction(languageKey: LanguageKeys): ITranslatorFunction {
     const translator = new Translator(languageKey)
     return translator.t.bind(translator)
   }
