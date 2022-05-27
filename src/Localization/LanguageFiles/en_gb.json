@@ -17,6 +17,18 @@
   "donate_button_paypal": "PayPal",
   "donate_button_boost": "Support Server",
 
+  "help_title": "Greetings {userName}, I am Servant {servantHighFiveL} {servantHighFiveR}",
+  "help_description": "I will help you to moderate, organize and entertain your Discord server.\nYou can freely choose what features to use or not to use as you can toggle every category, command and plugin on or off.\nFAQ: [What are categories, commands and plugins?]({faqLink})",
+  "help_gettingStarted_title": "Getting started",
+  "help_gettingStarted_description": "1. Invite Servant to your server\n2. Set up Servant to your desire in the Dashboard",
+  "help_howTo_title": "How to use Servant",
+  "help_howTo_description": "- Just type `/` and look through the commands. The rest should be intuitive.\n- Detailed command usages are in the help section on the website.\n- Questions? Check out the FAQ on the website or join the support server.",
+  "help_permissionSystem_title": "Permission System",
+  "help_permissionSystem_description": "- **Everyone**: Execute commands (except Moderation-commands)\n- **The server owner, users with Administrator-permission and users that have at least one of the Servant-Moderator roles**: Execute all commands & access and manage the dashboard\n- _Servant-Moderator roles can be set up in the dashboard._",
+  "help_button_website": "Website (Help, FAQ, Dashboard)",
+  "help_button_invite": "Invite Servant",
+  "help_button_support": "Support Server",
+
   "leaderboard_label": "Leaderboard: {guildName}",
   "leaderboard_clickHere": "Click here",
 
@@ -33,6 +45,9 @@
 
   "command_name_donate": "donate",
   "command_text_donate": "Learn how to support Servant.",
+
+  "command_name_help": "help",
+  "command_text_help": "First steps and help",
 
   "command_name_leaderboard": "leaderboard",
   "command_text_leaderboard": "Provides a link to the leaderboard of this server.",

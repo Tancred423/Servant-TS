@@ -2,8 +2,7 @@ import { SlashCommandBuilder } from '@discordjs/builders'
 import { RESTPostAPIApplicationCommandsJSONBody } from 'discord-api-types/v9'
 import { CommandInteraction, MessageEmbed } from 'discord.js'
 import moment from 'moment'
-import { DefaultVariables } from '../../Helpers/CommandHelper'
-import { Replacement } from '../../Localization/Replacement'
+import { IDefaultVariables } from '../../Helpers/CommandHelper'
 
 export class PingCommand {
   public static getData(t: Function): RESTPostAPIApplicationCommandsJSONBody {
@@ -17,7 +16,7 @@ export class PingCommand {
 
   public static async execute(
     interaction: CommandInteraction,
-    defaultVariables: DefaultVariables
+    defaultVariables: IDefaultVariables
   ): Promise<void> {
     const { client, myUser, t } = defaultVariables
 
@@ -26,7 +25,7 @@ export class PingCommand {
       .addField(t('ping_botPing'), `_${t('ping_botPingValue')}_`, true)
       .addField(
         t('ping_wsPing'),
-        t('ping_ms', new Replacement('ping', client.ws.ping)),
+        t('ping_ms', { ping: client.ws.ping.toString() }),
         true
       )
       .addField(
@@ -38,10 +37,9 @@ export class PingCommand {
     const start = moment()
 
     interaction.reply({ ephemeral: true, embeds: [embed] }).then((_) => {
-      embed.fields[0].value = t(
-        'ping_ms',
-        new Replacement('ping', moment().diff(start, 'milliseconds'))
-      )
+      embed.fields[0].value = t('ping_ms', {
+        ping: moment().diff(start, 'milliseconds').toString(),
+      })
 
       interaction.editReply({
         embeds: [embed],

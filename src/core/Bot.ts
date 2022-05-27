@@ -3,6 +3,7 @@ import 'dotenv/config'
 import { CommandDto } from '../Commands/CommandDto'
 import { DashboardCommand } from '../Commands/Standard/DashboardCommand'
 import { DonateCommand } from '../Commands/Standard/DonateCommand'
+import { HelpCommand } from '../Commands/Standard/HelpCommand'
 import { LeaderboardCommand } from '../Commands/Standard/LeaderboardCommand'
 import { PingCommand } from '../Commands/Standard/PingCommand'
 import { LanguageKeys } from '../Localization/LanguageKeys'
@@ -21,6 +22,7 @@ export class Bot {
       Bot.commands.set(languageKey, [
         new CommandDto(DashboardCommand.getData(t), DashboardCommand.execute),
         new CommandDto(DonateCommand.getData(t), DonateCommand.execute),
+        new CommandDto(HelpCommand.getData(t), HelpCommand.execute),
         new CommandDto(
           LeaderboardCommand.getData(t),
           LeaderboardCommand.execute

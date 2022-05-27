@@ -1,8 +1,7 @@
 import { SlashCommandBuilder } from '@discordjs/builders'
 import { RESTPostAPIApplicationCommandsJSONBody } from 'discord-api-types/v9'
 import { CommandInteraction, MessageActionRow, MessageButton } from 'discord.js'
-import { DefaultVariables } from '../../Helpers/CommandHelper'
-import { Replacement } from '../../Localization/Replacement'
+import { IDefaultVariables } from '../../Helpers/CommandHelper'
 import { Emojis } from '../../Utility/Emojis'
 
 export class LeaderboardCommand {
@@ -17,7 +16,7 @@ export class LeaderboardCommand {
 
   public static async execute(
     interaction: CommandInteraction,
-    defaultVariables: DefaultVariables
+    defaultVariables: IDefaultVariables
   ): Promise<void> {
     const { guild, myGuild, t } = defaultVariables
 
@@ -29,9 +28,7 @@ export class LeaderboardCommand {
           new MessageButton()
             .setURL(myGuild.getLeaderboardLink())
             .setStyle('LINK')
-            .setLabel(
-              t('leaderboard_label', new Replacement('guildName', guild.name))
-            )
+            .setLabel(t('leaderboard_label', { guildName: guild.name }))
             .setEmoji(Emojis.LINK)
         ),
       ],
