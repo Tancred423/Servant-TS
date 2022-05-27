@@ -15,7 +15,7 @@ export class Translator {
     this.languageKey = languageKey
   }
 
-  private t(key: string, ...replacements: Replacement[]): string {
+  private t(key: string, replacements?: Replacement): string {
     const languageFile = Translator.languageFiles.get(this.languageKey) as {
       [key: string]: string
     }
@@ -27,12 +27,9 @@ export class Translator {
 
     if (!translation) throw new Error(`Translation "${key}" not found!`)
 
-    if (replacements.length > 0) {
-      replacements.forEach((replacement) => {
-        translation = translation.replace(
-          `{${replacement.key}}`,
-          replacement.value.toString()
-        )
+    if (replacements) {
+      Object.entries(replacements).forEach(([placeholder, replacement]) => {
+        translation = translation.replace(`{${placeholder}}`, replacement)
       })
     }
 

@@ -1,3 +1,3 @@
-export class Replacement {
-  constructor(readonly key: string, readonly value: string | number) {}
+export interface Replacement {
+  [placeholder: string]: string
 }
