@@ -17,13 +17,13 @@ export class MyGuild {
     this.guildId = guild.id
   }
 
-  async getTranslatorFunction(
+  public async getTranslatorFunction(
     languageKey: LanguageKeys
   ): Promise<ITranslatorFunction> {
     return Translator.getFunction(languageKey)
   }
 
-  async getLanguageKey(): Promise<LanguageKeys> {
+  public async getLanguageKey(): Promise<LanguageKeys> {
     const sql = `SELECT language_code
                  FROM   guilds
                  WHERE  guild_id=${Database.escape(this.guildId)}`

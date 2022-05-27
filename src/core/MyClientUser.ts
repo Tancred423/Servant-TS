@@ -9,7 +9,7 @@ export class MyClientUser {
     this.clientUserId = clientUser.id
   }
 
-  setPresenceLoading() {
+  public setPresenceLoading() {
     this.clientUser.setPresence({
       status: 'dnd',
       activities: [
@@ -21,7 +21,7 @@ export class MyClientUser {
     })
   }
 
-  setPresenceOnline() {
+  public setPresenceOnline() {
     this.clientUser.setPresence({
       status: 'online',
       activities: [

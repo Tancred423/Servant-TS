@@ -16,13 +16,13 @@ export class MyUser {
     this.userId = user.id
   }
 
-  async getTranslatorFunction(
+  public async getTranslatorFunction(
     languageKey: LanguageKeys
   ): Promise<ITranslatorFunction> {
     return Translator.getFunction(languageKey)
   }
 
-  async getLanguageKey(): Promise<LanguageKeys> {
+  public async getLanguageKey(): Promise<LanguageKeys> {
     const sql = `SELECT language_code
                  FROM   users
                  WHERE  user_id=${Database.escape(this.userId)}`
@@ -44,11 +44,11 @@ export class MyUser {
     return LanguageKeys[key]
   }
 
-  async getColor(): Promise<ColorResolvable> {
+  public async getColor(): Promise<ColorResolvable> {
     return this.getColorCode() as unknown as ColorResolvable
   }
 
-  async getColorCode(): Promise<string> {
+  public async getColorCode(): Promise<string> {
     const sql = `SELECT color_code
                  FROM   users
                  WHERE  user_id=${Database.escape(this.userId)}`
