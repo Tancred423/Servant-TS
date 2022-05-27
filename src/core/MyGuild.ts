@@ -5,6 +5,7 @@ import { LanguageKeys } from '../Localization/LanguageKeys'
 import { Translator } from '../Localization/Translator'
 import { Logger } from '../Logging/Logger'
 import { LogTypes } from '../Logging/LogTypes'
+import { Comparators, QueryBuilder } from '../Utility/QueryBuilder'
 import { Bot } from './Bot'
 import { Database } from './Database'
 
@@ -24,9 +25,11 @@ export class MyGuild {
   }
 
   public async getLanguageKey(): Promise<LanguageKeys> {
-    const sql = `SELECT language_code
-                 FROM   guilds
-                 WHERE  guild_id=${Database.escape(this.guildId)}`
+    const sql = new QueryBuilder()
+      .select('language_code')
+      .from('guilds')
+      .where('guild_id', Comparators.EQUALS, this.guildId)
+      .build()
 
     let key = config.defaultLanguage as keyof typeof LanguageKeys
 
