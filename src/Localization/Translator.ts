@@ -39,7 +39,7 @@ export class Translator {
     return translation
   }
 
-  static getFunction(languageKey: LanguageKeys): Function {
+  public static getFunction(languageKey: LanguageKeys): Function {
     const translator = new Translator(languageKey)
     return translator.t.bind(translator)
   }

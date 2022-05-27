@@ -4,6 +4,7 @@ import { LanguageKeys } from '../Localization/LanguageKeys'
 import { Translator } from '../Localization/Translator'
 import { Logger } from '../Logging/Logger'
 import { LogTypes } from '../Logging/LogTypes'
+import { Comparators, QueryBuilder } from '../Utility/QueryBuilder'
 import { Database } from './Database'
 
 export class MyUser {
@@ -15,14 +16,18 @@ export class MyUser {
     this.userId = user.id
   }
 
-  async getTranslatorFunction(languageKey: LanguageKeys): Promise<Function> {
+  public async getTranslatorFunction(
+    languageKey: LanguageKeys
+  ): Promise<Function> {
     return Translator.getFunction(languageKey)
   }
 
-  async getLanguageKey(): Promise<LanguageKeys> {
-    const sql = `SELECT language_code
-                 FROM   users
-                 WHERE  user_id=${Database.escape(this.userId)}`
+  public async getLanguageKey(): Promise<LanguageKeys> {
+    const sql = new QueryBuilder()
+      .select('language_code')
+      .from('users')
+      .where('user_id', Comparators.EQUALS, this.userId)
+      .build()
 
     let key = config.defaultLanguage as keyof typeof LanguageKeys
 
@@ -41,14 +46,16 @@ export class MyUser {
     return LanguageKeys[key]
   }
 
-  async getColor(): Promise<ColorResolvable> {
+  public async getColor(): Promise<ColorResolvable> {
     return this.getColorCode() as unknown as ColorResolvable
   }
 
-  async getColorCode(): Promise<string> {
-    const sql = `SELECT color_code
-                 FROM   users
-                 WHERE  user_id=${Database.escape(this.userId)}`
+  public async getColorCode(): Promise<string> {
+    const sql = new QueryBuilder()
+      .select('color_code')
+      .from('users')
+      .where('user_id', Comparators.EQUALS, this.userId)
+      .build()
 
     let color = config.defautColor
 

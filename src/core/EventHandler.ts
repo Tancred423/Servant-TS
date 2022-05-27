@@ -9,7 +9,7 @@ import { MyClientUser } from './MyClientUser'
 import { MyGuild } from './MyGuild'
 
 export class EventHandler {
-  static async onReady(client: Client<true>) {
+  public static async onReady(client: Client<true>) {
     const myClientUser = new MyClientUser(client.user)
 
     Logger.log(LogTypes.NORMAL, 1653500331, 'Starting up...')
@@ -34,7 +34,7 @@ export class EventHandler {
     myClientUser.setPresenceOnline()
   }
 
-  static async onCommand(interaction: CommandInteraction) {
+  public static async onCommand(interaction: CommandInteraction) {
     const { commandName } = interaction
     const defaultVariables = await CommandHelper.getDefaultVariables(
       interaction
