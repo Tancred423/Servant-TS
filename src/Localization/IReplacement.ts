@@ -1,3 +1,3 @@
-export interface Replacement {
+export interface IReplacement {
   [placeholder: string]: string
 }

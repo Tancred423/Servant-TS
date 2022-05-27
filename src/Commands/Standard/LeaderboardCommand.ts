@@ -1,7 +1,7 @@
 import { SlashCommandBuilder } from '@discordjs/builders'
 import { RESTPostAPIApplicationCommandsJSONBody } from 'discord-api-types/v9'
 import { CommandInteraction, MessageActionRow, MessageButton } from 'discord.js'
-import { DefaultVariables } from '../../Helpers/CommandHelper'
+import { IDefaultVariables } from '../../Helpers/CommandHelper'
 import { Emojis } from '../../Utility/Emojis'
 
 export class LeaderboardCommand {
@@ -16,7 +16,7 @@ export class LeaderboardCommand {
 
   public static async execute(
     interaction: CommandInteraction,
-    defaultVariables: DefaultVariables
+    defaultVariables: IDefaultVariables
   ): Promise<void> {
     const { guild, myGuild, t } = defaultVariables
 
