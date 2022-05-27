@@ -77,8 +77,6 @@ export class QueryBuilder {
   }
 
   public build(): string {
-    const sql = this.sql.build()
-    console.log(sql)
-    return sql
+    return this.sql.build()
   }
 }
