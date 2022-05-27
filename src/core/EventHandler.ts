@@ -1,7 +1,6 @@
 import { Client, CommandInteraction } from 'discord.js'
 import config from '../config.json'
 import { CommandHelper } from '../Helpers/CommandHelper'
-import { Replacement } from '../Localization/Replacement'
 import { Logger } from '../Logging/Logger'
 import { LogTypes } from '../Logging/LogTypes'
 import { Bot } from './Bot'
@@ -52,10 +51,9 @@ export class EventHandler {
 
       interaction.reply({
         ephemeral: true,
-        content: defaultVariables.t(
-          'error_generic',
-          new Replacement('inviteLink', '<https://support.servant.gg/>')
-        ),
+        content: defaultVariables.t('error_generic', {
+          inviteLink: `<${config.linkSupportServer}>`,
+        }),
       })
     }
   }

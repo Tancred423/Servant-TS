@@ -17,6 +17,18 @@
   "donate_button_paypal": "PayPal",
   "donate_button_boost": "Support-Server",
 
+  "help_title": "Grüße {userName}, Ich bin Servant {servantHighFiveL} {servantHighFiveR}",
+  "help_description": "Ich werde dir helfen, deinen Discord-Server zu moderieren, organisieren und zu unterhalten.\nDu kannst frei entscheiden, welche Funktionalitäten du nutzen willst oder nicht, da du jede Kategorie, Befehl oder Plugin de- oder aktivieren kannst.\nFAQ: [Was sind Kategorien, Befehle und Plugins?]({faqLink})",
+  "help_gettingStarted_title": "Erste Schritte",
+  "help_gettingStarted_description": "1. Lade Servant zu deinem Server ein\n2. Stelle Servant im Dashboard nach deinen Wünschen ein",
+  "help_howTo_title": "Wie man Servant benutzt",
+  "help_howTo_description": "- Tippe einfach `/` ein und durchstöber die Befehle. Der Rest sollte selbsterklärend sein.\n- Detailinformationen zu Befehlen können in der Help-Sektion auf der Webseite gefunden werden.\n- Fragen? Siehe im FAQ nach oder tritt dem Support-Server bei.",
+  "help_permissionSystem_title": "Berechtigungssystem",
+  "help_permissionSystem_description": "- **Jeder**: Ausführen von Befehlen (außer Moderationsbefehle)\n- **Der Serverbesitzer, Nutzer mit Administrator-Berechtigungen und Nutzer, die mindestens eine der Servant-Moderator-Rollen haben**: Ausführen aller Befehle, sowie Zugriff und Änderungsberechtigung des Dashboards.\n- _Servant-Moderator-Rollen können im Dashboard eingestellt werden._",
+  "help_button_website": "Webseite (Hilfe, FAQ, Dashboard)",
+  "help_button_invite": "Servant einladen",
+  "help_button_support": "Support-Server",
+
   "leaderboard_label": "Rangliste: {guildName}",
   "leaderboard_clickHere": "Hier klicken",
 
@@ -33,6 +45,9 @@
 
   "command_name_donate": "spenden",
   "command_text_donate": "Siehe Möglichkeiten Servant zu unterstützen.",
+
+  "command_name_help": "hilfe",
+  "command_text_help": "Erste Schritte und Hilfe",
 
   "command_name_leaderboard": "rangliste",
   "command_text_leaderboard": "Link zu der Rangliste dieses Servers.",

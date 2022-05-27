@@ -1,17 +1,25 @@
-import { Client, CommandInteraction, Guild, User } from 'discord.js'
+import {
+  Client,
+  CommandInteraction,
+  Guild,
+  GuildMember,
+  User,
+} from 'discord.js'
 import { MyGuild } from '../core/MyGuild'
 import { MyUser } from '../core/MyUser'
 import { LanguageKeys } from '../Localization/LanguageKeys'
+import { TranslatorFunction } from '../Localization/TranslatorFunction'
 
 export interface DefaultVariables {
   client: Client<true>
   user: User
   myUser: MyUser
   userLanguageKey: LanguageKeys
+  member: GuildMember
   guild: Guild
   myGuild: MyGuild
   guildLanguageKey: LanguageKeys
-  t: Function
+  t: TranslatorFunction
 }
 
 export class CommandHelper {
@@ -22,6 +30,7 @@ export class CommandHelper {
     const user = interaction.user
     const myUser = new MyUser(user)
     const userLanguageKey = await myUser.getLanguageKey()
+    const member = interaction.member!! as GuildMember
     const guild = interaction.guild!!
     const myGuild = new MyGuild(guild)
     const guildLanguageKey = await myGuild.getLanguageKey()
@@ -32,6 +41,7 @@ export class CommandHelper {
       user,
       myUser,
       userLanguageKey,
+      member,
       guild,
       myGuild,
       guildLanguageKey,

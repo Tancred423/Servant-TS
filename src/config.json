@@ -5,7 +5,9 @@
   "linkWebsite": "https://servant.gg",
   "pathDashboard": "/dashboard",
   "pathLeaderboard": "/leaderboard",
+  "pathFaq": "/faq",
   "linkPatreon": "https://patreon.com/tancred",
   "linkPaypal": "https://paypal.me/servantdiscord",
+  "linkInviteServant": "https://invite.servant.gg",
   "linkSupportServer": "https://support.servant.gg"
 }
