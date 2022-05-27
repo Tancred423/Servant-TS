@@ -35,4 +35,8 @@ export class Database {
   public static escape(string: string): string {
     return mysql.escape(string)
   }
+
+  public static escapeBackticks(string: string): string {
+    return this.escape(string).replace(/\'/g, '`')
+  }
 }
