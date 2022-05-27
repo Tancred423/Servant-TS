@@ -13,17 +13,17 @@ export class QueryBuilder {
   private sql = new StringBuilder()
 
   public select(field: string, ...fields: string[]): QueryBuilder {
-    this.sql.set('SELECT ').append(Database.escape(field))
+    this.sql.set('SELECT ').append(Database.escapeBackticks(field))
 
     fields.forEach((f) => {
-      this.sql.append(', ').append(Database.escape(f))
+      this.sql.append(', ').append(Database.escapeBackticks(f))
     })
 
     return this
   }
 
   public from(table: string): QueryBuilder {
-    this.sql.append(' FROM ').append(Database.escape(table))
+    this.sql.append(' FROM ').append(Database.escapeBackticks(table))
 
     return this
   }
@@ -35,7 +35,7 @@ export class QueryBuilder {
   ): QueryBuilder {
     this.sql
       .append(' WHERE ')
-      .append(Database.escape(field))
+      .append(Database.escapeBackticks(field))
       .append(' ')
       .append(comparator)
       .append(' ')
@@ -51,7 +51,7 @@ export class QueryBuilder {
   ): QueryBuilder {
     this.sql
       .append(' AND ')
-      .append(Database.escape(field))
+      .append(Database.escapeBackticks(field))
       .append(' ')
       .append(comparator)
       .append(' ')
@@ -67,7 +67,7 @@ export class QueryBuilder {
   ): QueryBuilder {
     this.sql
       .append(' OR ')
-      .append(Database.escape(field))
+      .append(Database.escapeBackticks(field))
       .append(' ')
       .append(comparator)
       .append(' ')
