@@ -1,8 +1,8 @@
+import { IReplacement } from './IReplacement'
+import { ITranslatorFunction } from './ITranslatorFunction'
 import de_de from './LanguageFiles/de_de.json'
 import en_gb from './LanguageFiles/en_gb.json'
 import { LanguageKeys } from './LanguageKeys'
-import { Replacement } from './Replacement'
-import { TranslatorFunction } from './TranslatorFunction'
 
 export class Translator {
   private static languageFiles = new Map<string, any>([
@@ -16,7 +16,7 @@ export class Translator {
     this.languageKey = languageKey
   }
 
-  private t(key: string, replacements?: Replacement): string {
+  private t(key: string, replacements?: IReplacement): string {
     const languageFile = Translator.languageFiles.get(this.languageKey) as {
       [key: string]: string
     }
@@ -37,7 +37,7 @@ export class Translator {
     return translation
   }
 
-  static getFunction(languageKey: LanguageKeys): TranslatorFunction {
+  static getFunction(languageKey: LanguageKeys): ITranslatorFunction {
     const translator = new Translator(languageKey)
     return translator.t.bind(translator)
   }

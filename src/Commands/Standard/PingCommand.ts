@@ -2,7 +2,7 @@ import { SlashCommandBuilder } from '@discordjs/builders'
 import { RESTPostAPIApplicationCommandsJSONBody } from 'discord-api-types/v9'
 import { CommandInteraction, MessageEmbed } from 'discord.js'
 import moment from 'moment'
-import { DefaultVariables } from '../../Helpers/CommandHelper'
+import { IDefaultVariables } from '../../Helpers/CommandHelper'
 
 export class PingCommand {
   public static getData(t: Function): RESTPostAPIApplicationCommandsJSONBody {
@@ -16,7 +16,7 @@ export class PingCommand {
 
   public static async execute(
     interaction: CommandInteraction,
-    defaultVariables: DefaultVariables
+    defaultVariables: IDefaultVariables
   ): Promise<void> {
     const { client, myUser, t } = defaultVariables
 

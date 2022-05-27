@@ -7,10 +7,10 @@ import {
 } from 'discord.js'
 import { MyGuild } from '../core/MyGuild'
 import { MyUser } from '../core/MyUser'
+import { ITranslatorFunction } from '../Localization/ITranslatorFunction'
 import { LanguageKeys } from '../Localization/LanguageKeys'
-import { TranslatorFunction } from '../Localization/TranslatorFunction'
 
-export interface DefaultVariables {
+export interface IDefaultVariables {
   client: Client<true>
   user: User
   myUser: MyUser
@@ -19,13 +19,13 @@ export interface DefaultVariables {
   guild: Guild
   myGuild: MyGuild
   guildLanguageKey: LanguageKeys
-  t: TranslatorFunction
+  t: ITranslatorFunction
 }
 
 export class CommandHelper {
   public static async getDefaultVariables(
     interaction: CommandInteraction
-  ): Promise<DefaultVariables> {
+  ): Promise<IDefaultVariables> {
     const client = interaction.client
     const user = interaction.user
     const myUser = new MyUser(user)

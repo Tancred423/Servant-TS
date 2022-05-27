@@ -1,8 +1,8 @@
 import { ApplicationCommandDataResolvable, Guild } from 'discord.js'
 import config from '../config.json'
+import { ITranslatorFunction } from '../Localization/ITranslatorFunction'
 import { LanguageKeys } from '../Localization/LanguageKeys'
 import { Translator } from '../Localization/Translator'
-import { TranslatorFunction } from '../Localization/TranslatorFunction'
 import { Logger } from '../Logging/Logger'
 import { LogTypes } from '../Logging/LogTypes'
 import { Bot } from './Bot'
@@ -19,7 +19,7 @@ export class MyGuild {
 
   async getTranslatorFunction(
     languageKey: LanguageKeys
-  ): Promise<TranslatorFunction> {
+  ): Promise<ITranslatorFunction> {
     return Translator.getFunction(languageKey)
   }
 

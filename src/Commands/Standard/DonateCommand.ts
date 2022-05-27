@@ -7,7 +7,7 @@ import {
   MessageEmbed,
 } from 'discord.js'
 import config from '../../config.json'
-import { DefaultVariables } from '../../Helpers/CommandHelper'
+import { IDefaultVariables } from '../../Helpers/CommandHelper'
 import { Emojis } from '../../Utility/Emojis'
 
 export class DonateCommand {
@@ -22,7 +22,7 @@ export class DonateCommand {
 
   public static async execute(
     interaction: CommandInteraction,
-    defaultVariables: DefaultVariables
+    defaultVariables: IDefaultVariables
   ): Promise<void> {
     const { myUser, t } = defaultVariables
 
