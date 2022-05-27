@@ -4,9 +4,11 @@ Your Multifunctional Discord Bot
 
 ![Servant](https://i.imgur.com/MDRt4fA.png)
 
-Greetings master! I am Servant, your multifunctional Discord bot.
+Greetings! I am Servant, your multifunctional Discord bot.
 
 I will help you to moderate, organize and entertain your Discord server by providing over 50 unique features.
+You can turn every feature on or off, so if you just need one of the features, feel free to use just that one!
+Fully customizable. No bloat. All in one.
 
 ## Links
 
