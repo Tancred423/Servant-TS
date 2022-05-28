@@ -2,14 +2,14 @@ import { SlashCommandBuilder } from '@discordjs/builders'
 import { RESTPostAPIApplicationCommandsJSONBody } from 'discord-api-types/v9'
 import { CommandInteraction, MessageActionRow, MessageButton } from 'discord.js'
 import { IDefaultVariables } from '../../Helpers/CommandHelper'
-import { Emojis } from '../../Utility/Emojis'
+import { MyEmojis } from '../../Utility/Emojis'
 
 export class DashboardCommand {
   public static getData(t: Function): RESTPostAPIApplicationCommandsJSONBody {
     return new SlashCommandBuilder()
-      .setName(t('command_name_dashboard'))
+      .setName(t('command_dashboard_name'))
       .setDescription(
-        `[${t('command_category_standard')}] ${t('command_text_dashboard')}`
+        `[${t('command_category_standard')}] ${t('command_dashboard_info')}`
       )
       .toJSON()
   }
@@ -18,18 +18,18 @@ export class DashboardCommand {
     interaction: CommandInteraction,
     defaultVariables: IDefaultVariables
   ): Promise<void> {
-    const { guild, myGuild, t } = defaultVariables
+    const { guild, myGuild, t, send } = defaultVariables
 
-    interaction.reply({
+    send({
       ephemeral: true,
-      content: `${Emojis.POINT_DOWN} ${t('dashboard_clickHere')}`,
+      content: `${MyEmojis.POINT_DOWN} ${t('dashboard_clickHere')}`,
       components: [
         new MessageActionRow().addComponents(
           new MessageButton()
             .setURL(myGuild.getDashboardLink())
             .setStyle('LINK')
             .setLabel(t('dashboard_label', { guildName: guild.name }))
-            .setEmoji(Emojis.LINK)
+            .setEmoji(MyEmojis.LINK)
         ),
       ],
     })

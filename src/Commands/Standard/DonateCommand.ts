@@ -8,14 +8,14 @@ import {
 } from 'discord.js'
 import config from '../../config.json'
 import { IDefaultVariables } from '../../Helpers/CommandHelper'
-import { Emojis } from '../../Utility/Emojis'
+import { MyEmojis } from '../../Utility/Emojis'
 
 export class DonateCommand {
   public static getData(t: Function): RESTPostAPIApplicationCommandsJSONBody {
     return new SlashCommandBuilder()
-      .setName(t('command_name_donate'))
+      .setName(t('command_donate_name'))
       .setDescription(
-        `[${t('command_category_standard')}] ${t('command_text_donate')}`
+        `[${t('command_category_standard')}] ${t('command_donate_info')}`
       )
       .toJSON()
   }
@@ -24,7 +24,7 @@ export class DonateCommand {
     interaction: CommandInteraction,
     defaultVariables: IDefaultVariables
   ): Promise<void> {
-    const { myUser, t } = defaultVariables
+    const { myUser, t, send } = defaultVariables
 
     const embed = new MessageEmbed()
       .setColor(await myUser.getColor())
@@ -40,19 +40,19 @@ export class DonateCommand {
         .setStyle('LINK')
         .setLabel(t('donate_button_patreon'))
         .setURL(config.linkPatreon)
-        .setEmoji(Emojis.LINK),
+        .setEmoji(MyEmojis.LINK),
       new MessageButton()
         .setStyle('LINK')
         .setLabel(t('donate_button_paypal'))
         .setURL(config.linkPaypal)
-        .setEmoji(Emojis.LINK),
+        .setEmoji(MyEmojis.LINK),
       new MessageButton()
         .setStyle('LINK')
         .setLabel(t('donate_button_boost'))
         .setURL(config.linkSupportServer)
-        .setEmoji(Emojis.LINK)
+        .setEmoji(MyEmojis.LINK)
     )
 
-    await interaction.reply({ embeds: [embed], components: [row] })
+    await send({ embeds: [embed], components: [row] })
   }
 }

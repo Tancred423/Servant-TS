@@ -9,6 +9,8 @@ import { MyGuild } from '../core/MyGuild'
 import { MyUser } from '../core/MyUser'
 import { ITranslatorFunction } from '../Localization/ITranslatorFunction'
 import { LanguageKeys } from '../Localization/LanguageKeys'
+import { InteractionHelper } from './InteractionHelper'
+import { ISendFunction } from './ISendFunction'
 
 export interface IDefaultVariables {
   client: Client<true>
@@ -20,6 +22,7 @@ export interface IDefaultVariables {
   myGuild: MyGuild
   guildLanguageKey: LanguageKeys
   t: ITranslatorFunction
+  send: ISendFunction
 }
 
 export class CommandHelper {
@@ -35,6 +38,7 @@ export class CommandHelper {
     const myGuild = new MyGuild(guild)
     const guildLanguageKey = await myGuild.getLanguageKey()
     const t = await myGuild.getTranslatorFunction(guildLanguageKey)
+    const send = InteractionHelper.getSendFunction(interaction)
 
     return {
       client,
@@ -46,6 +50,7 @@ export class CommandHelper {
       myGuild,
       guildLanguageKey,
       t,
+      send,
     }
   }
 }
