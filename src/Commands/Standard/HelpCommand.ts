@@ -8,15 +8,15 @@ import {
 } from 'discord.js'
 import config from '../../config.json'
 import { IDefaultVariables } from '../../Helpers/CommandHelper'
-import { Emojis } from '../../Utility/Emojis'
+import { MyEmojis } from '../../Utility/Emojis'
 import { Emotes } from '../../Utility/Emotes'
 
 export class HelpCommand {
   public static getData(t: Function): RESTPostAPIApplicationCommandsJSONBody {
     return new SlashCommandBuilder()
-      .setName(t('command_name_help'))
+      .setName(t('command_help_name'))
       .setDescription(
-        `[${t('command_category_standard')}] ${t('command_text_help')}`
+        `[${t('command_category_standard')}] ${t('command_help_info')}`
       )
       .toJSON()
   }
@@ -25,7 +25,7 @@ export class HelpCommand {
     interaction: CommandInteraction,
     defaultVariables: IDefaultVariables
   ): Promise<void> {
-    const { client, myUser, member, t } = defaultVariables
+    const { client, myUser, member, t, send } = defaultVariables
 
     const embed = new MessageEmbed()
       .setColor(await myUser.getColor())
@@ -60,21 +60,21 @@ export class HelpCommand {
     const row = new MessageActionRow().addComponents([
       new MessageButton()
         .setLabel(t('help_button_website'))
-        .setEmoji(Emojis.LINK)
+        .setEmoji(MyEmojis.LINK)
         .setStyle('LINK')
         .setURL(config.linkWebsite),
       new MessageButton()
         .setLabel(t('help_button_invite'))
-        .setEmoji(Emojis.LINK)
+        .setEmoji(MyEmojis.LINK)
         .setStyle('LINK')
         .setURL(config.linkInviteServant),
       new MessageButton()
         .setLabel(t('help_button_support'))
-        .setEmoji(Emojis.LINK)
+        .setEmoji(MyEmojis.LINK)
         .setStyle('LINK')
         .setURL(config.linkSupportServer),
     ])
 
-    await interaction.reply({ embeds: [embed], components: [row] })
+    await send({ embeds: [embed], components: [row] })
   }
 }

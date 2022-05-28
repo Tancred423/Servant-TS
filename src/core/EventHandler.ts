@@ -49,7 +49,7 @@ export class EventHandler {
     } catch (error: any) {
       Logger.log(LogTypes.ERROR, 1653500380, error.message)
 
-      interaction.reply({
+      defaultVariables.send({
         ephemeral: true,
         content: defaultVariables.t('error_generic', {
           inviteLink: `<${config.linkSupportServer}>`,

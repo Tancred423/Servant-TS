@@ -1,6 +1,7 @@
 import { Client, Intents } from 'discord.js'
 import 'dotenv/config'
 import { CommandDto } from '../Commands/CommandDto'
+import { RandomCommand } from '../Commands/Fun/Random'
 import { DashboardCommand } from '../Commands/Standard/DashboardCommand'
 import { DonateCommand } from '../Commands/Standard/DonateCommand'
 import { HelpCommand } from '../Commands/Standard/HelpCommand'
@@ -18,8 +19,8 @@ export class Bot {
         LanguageKeys[languageKeyString as keyof typeof LanguageKeys]
       const t = Translator.getFunction(languageKey)
 
-      // Standard
       Bot.commands.set(languageKey, [
+        // Standard
         new CommandDto(DashboardCommand.getData(t), DashboardCommand.execute),
         new CommandDto(DonateCommand.getData(t), DonateCommand.execute),
         new CommandDto(HelpCommand.getData(t), HelpCommand.execute),
@@ -28,6 +29,9 @@ export class Bot {
           LeaderboardCommand.execute
         ),
         new CommandDto(PingCommand.getData(t), PingCommand.execute),
+
+        // Fun
+        new CommandDto(RandomCommand.getData(t), RandomCommand.execute),
       ])
     }
   }

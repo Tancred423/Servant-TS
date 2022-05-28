@@ -1,6 +1,43 @@
 {
   "error_generic": "Oops! An error occured. Please try again later of if this error persists, you can get help here: {inviteLink}",
 
+  "command_category_standard": "Standard",
+  "command_category_fun": "Fun",
+
+  "command_dashboard_name": "dashboard",
+  "command_dashboard_info": "Provides a link to the dashboard of this server.",
+
+  "command_donate_name": "donate",
+  "command_donate_info": "Learn how to support Servant.",
+
+  "command_help_name": "help",
+  "command_help_info": "First steps and help",
+
+  "command_leaderboard_name": "leaderboard",
+  "command_leaderboard_info": "Provides a link to the leaderboard of this server.",
+
+  "command_ping_name": "ping",
+  "command_ping_info": "Shows latencies and uptime.",
+
+  "command_random_name": "random",
+  "command_random_info": "A random image of whatever you are choosing.",
+  "command_random_option_animal_name": "animal",
+  "command_random_option_animal_info": "Pick an animal you want to see!",
+  "command_random_option_animal_choice_bird": "Bird",
+  "command_random_option_animal_choice_bunny": "Bunny",
+  "command_random_option_animal_choice_cat": "Cat",
+  "command_random_option_animal_choice_dog": "Dog",
+  "command_random_option_animal_choice_duck": "Duck",
+  "command_random_option_animal_choice_fox": "Fox",
+  "command_random_option_animal_choice_kangaroo": "Kangaroo",
+  "command_random_option_animal_choice_koala": "Koala",
+  "command_random_option_animal_choice_lizard": "Lizard",
+  "command_random_option_animal_choice_panda": "Panda",
+  "command_random_option_animal_choice_racoon": "Racoon",
+  "command_random_option_animal_choice_redPanda": "Red Panda",
+  "command_random_option_animal_choice_shiba": "Shiba",
+  "command_random_option_animal_choice_sloth": "Sloth",
+
   "dashboard_label": "Dashboard: {guildName}",
   "dashboard_clickHere": "Click here",
 
@@ -38,20 +75,6 @@
   "ping_ms": "{ping} ms",
   "ping_lastRestart": "Last restart",
 
-  "command_category_standard": "Standard",
-
-  "command_name_dashboard": "dashboard",
-  "command_text_dashboard": "Provides a link to the dashboard of this server.",
-
-  "command_name_donate": "donate",
-  "command_text_donate": "Learn how to support Servant.",
-
-  "command_name_help": "help",
-  "command_text_help": "First steps and help",
-
-  "command_name_leaderboard": "leaderboard",
-  "command_text_leaderboard": "Provides a link to the leaderboard of this server.",
-
-  "command_name_ping": "ping",
-  "command_text_ping": "Shows latencies and uptime."
+  "random_imageNotFound": "Sorry, I couldn't find an image. :(",
+  "random_credits": "Thanks to {apiLink}"
 }

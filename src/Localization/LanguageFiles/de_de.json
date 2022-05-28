@@ -1,6 +1,43 @@
 {
   "error_generic": "Ups! Ein Fehler ist aufgetreten. Versuche es später erneut oder falls der Fehler erneut auftritt kannst du hier Hilfe bekommen: {inviteLink}",
 
+  "command_category_standard": "Standart",
+  "command_category_fun": "Spaß",
+
+  "command_dashboard_name": "dashboard",
+  "command_dashboard_info": "Link zu dem Dashboards dieses Servers.",
+
+  "command_donate_name": "spenden",
+  "command_donate_info": "Siehe Möglichkeiten Servant zu unterstützen.",
+
+  "command_help_name": "hilfe",
+  "command_help_info": "Erste Schritte und Hilfe",
+
+  "command_leaderboard_name": "rangliste",
+  "command_leaderboard_info": "Link zu der Rangliste dieses Servers.",
+
+  "command_ping_name": "ping",
+  "command_ping_info": "Zeigt Ping und Uptime.",
+
+  "command_random_name": "random",
+  "command_random_info": "Ein random Bild von was auch immer du dir aussuchst.",
+  "command_random_option_animal_name": "tier",
+  "command_random_option_animal_info": "Wähle ein Tier, das du sehen willst!",
+  "command_random_option_animal_choice_bird": "Vogel",
+  "command_random_option_animal_choice_bunny": "Hase",
+  "command_random_option_animal_choice_cat": "Katze",
+  "command_random_option_animal_choice_dog": "Hund",
+  "command_random_option_animal_choice_duck": "Ente",
+  "command_random_option_animal_choice_fox": "Fuchs",
+  "command_random_option_animal_choice_kangaroo": "Känguru",
+  "command_random_option_animal_choice_koala": "Koala",
+  "command_random_option_animal_choice_lizard": "Echse",
+  "command_random_option_animal_choice_panda": "Panda",
+  "command_random_option_animal_choice_racoon": "Waschbär",
+  "command_random_option_animal_choice_redPanda": "Roter Panda",
+  "command_random_option_animal_choice_shiba": "Shiba",
+  "command_random_option_animal_choice_sloth": "Faultier",
+
   "dashboard_label": "Dashboard: {guildName}",
   "dashboard_clickHere": "Hier klicken",
 
@@ -38,20 +75,6 @@
   "ping_ms": "{ping} ms",
   "ping_lastRestart": "Letzter Neustart",
 
-  "command_category_standard": "Standart",
-
-  "command_name_dashboard": "dashboard",
-  "command_text_dashboard": "Link zu dem Dashboards dieses Servers.",
-
-  "command_name_donate": "spenden",
-  "command_text_donate": "Siehe Möglichkeiten Servant zu unterstützen.",
-
-  "command_name_help": "hilfe",
-  "command_text_help": "Erste Schritte und Hilfe",
-
-  "command_name_leaderboard": "rangliste",
-  "command_text_leaderboard": "Link zu der Rangliste dieses Servers.",
-
-  "command_name_ping": "ping",
-  "command_text_ping": "Zeigt Ping und Uptime."
+  "random_imageNotFound": "Entschuldige, ich konnte kein Bild finden. :(",
+  "random_credits": "Danke an {apiLink}"
 }

@@ -7,9 +7,9 @@ import { IDefaultVariables } from '../../Helpers/CommandHelper'
 export class PingCommand {
   public static getData(t: Function): RESTPostAPIApplicationCommandsJSONBody {
     return new SlashCommandBuilder()
-      .setName(t('command_name_ping'))
+      .setName(t('command_ping_name'))
       .setDescription(
-        `[${t('command_category_standard')}] ${t('command_text_ping')}`
+        `[${t('command_category_standard')}] ${t('command_ping_info')}`
       )
       .toJSON()
   }
@@ -18,7 +18,7 @@ export class PingCommand {
     interaction: CommandInteraction,
     defaultVariables: IDefaultVariables
   ): Promise<void> {
-    const { client, myUser, t } = defaultVariables
+    const { client, myUser, t, send } = defaultVariables
 
     const embed = new MessageEmbed()
       .setColor(await myUser.getColor())
@@ -36,12 +36,16 @@ export class PingCommand {
 
     const start = moment()
 
-    interaction.reply({ ephemeral: true, embeds: [embed] }).then((_) => {
+    send({
+      ephemeral: true,
+      embeds: [embed],
+    }).then((_) => {
       embed.fields[0].value = t('ping_ms', {
         ping: moment().diff(start, 'milliseconds').toString(),
       })
 
-      interaction.editReply({
+      send({
+        ephemeral: true,
         embeds: [embed],
       })
     })
