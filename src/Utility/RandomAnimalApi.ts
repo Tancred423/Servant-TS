@@ -140,7 +140,7 @@ export class RandomAnimalApi {
           break
 
         case Animals.SLOTH:
-          api = ' https://sloth.pics/api'
+          api = 'https://sloth.pics/api'
           res = await axios.get(api)
           url = res?.data?.url
           if (await StringHelper.isValidImageUrl(url))
