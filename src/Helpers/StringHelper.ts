@@ -1,4 +1,5 @@
 import axios from 'axios'
+import { User } from 'discord.js'
 
 export class StringHelper {
   public static async isValidUrl(
@@ -17,5 +18,9 @@ export class StringHelper {
       url!!.match(/^http[^\?]*.(jpg|jpeg|gif|png|tiff|bmp)(\?(.*))?$/gim) !==
       null
     )
+  }
+
+  public static getFullUserName(user: User): string {
+    return `${user.username}#${user.discriminator}`
   }
 }

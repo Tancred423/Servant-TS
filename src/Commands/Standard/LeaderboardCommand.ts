@@ -20,7 +20,7 @@ export class LeaderboardCommand {
   ): Promise<void> {
     const { guild, myGuild, t, send } = defaultVariables
 
-    send({
+    await send({
       ephemeral: true,
       content: `${MyEmojis.POINT_DOWN} ${t('leaderboard_clickHere')}`,
       components: [

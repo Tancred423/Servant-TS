@@ -19,6 +19,13 @@
   "command_ping_name": "ping",
   "command_ping_info": "Zeigt Ping und Uptime.",
 
+  "command_avatar_name": "avatar",
+  "command_avatar_info": "Lass dir das Avatar eines Nutzers anzeigen.",
+  "command_avatar_option_user_name": "nutzer",
+  "command_avatar_option_user_info": "Wähle einen Nutzer aus.",
+  "command_avatar_option_hidden_name": "versteckt",
+  "command_avatar_option_hidden_info": "Ergebnis verstecken?",
+
   "command_random_name": "random",
   "command_random_info": "Ein random Bild von was auch immer du dir aussuchst.",
   "command_random_option_animal_name": "tier",
@@ -74,6 +81,9 @@
   "ping_wsPing": "WebSocket Ping",
   "ping_ms": "{ping} ms",
   "ping_lastRestart": "Letzter Neustart",
+
+  "avatar_of": "Avatar von {nickname} ({usernameWithDiscriminator})",
+  "avatar_openInBrowser": "[Im Browser öffnen]({link})",
 
   "random_imageNotFound": "Entschuldige, ich konnte kein Bild finden. :(",
   "random_credits": "Danke an {apiLink}"

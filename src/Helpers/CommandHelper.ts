@@ -1,6 +1,8 @@
 import {
+  CacheType,
   Client,
   CommandInteraction,
+  CommandInteractionOptionResolver,
   Guild,
   GuildMember,
   User,
@@ -9,6 +11,7 @@ import { MyGuild } from '../core/MyGuild'
 import { MyUser } from '../core/MyUser'
 import { ITranslatorFunction } from '../Localization/ITranslatorFunction'
 import { LanguageKeys } from '../Localization/LanguageKeys'
+import { StringBuilder } from '../Utility/StringBuilder'
 import { InteractionHelper } from './InteractionHelper'
 import { ISendFunction } from './ISendFunction'
 
@@ -26,6 +29,29 @@ export interface IDefaultVariables {
 }
 
 export class CommandHelper {
+  public static getOptionsString(
+    options: Omit<
+      CommandInteractionOptionResolver<CacheType>,
+      'getMessage' | 'getFocused'
+    >
+  ): string {
+    const optionString = new StringBuilder()
+
+    options.data.forEach((option) => {
+      if (optionString.build() === '') optionString.set(' ')
+      if (optionString.build() !== ' ') optionString.append(', ')
+
+      optionString
+        .append(option.name)
+        .append(': ')
+        .append(option.type)
+        .append(' = ')
+        .append(option.value as string)
+    })
+
+    return optionString.build()
+  }
+
   public static async getDefaultVariables(
     interaction: CommandInteraction
   ): Promise<IDefaultVariables> {
