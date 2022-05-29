@@ -17,10 +17,20 @@ export class AvatarCommand {
           .setDescription(t('command_avatar_option_user_info'))
           .setRequired(true)
       )
-      .addBooleanOption((option) =>
+      .addStringOption((option) =>
         option
           .setName(t('command_avatar_option_hidden_name'))
           .setDescription(t('command_avatar_option_hidden_info'))
+          .setChoices(
+            {
+              name: t('command_avatar_option_hidden_choice_hidden'),
+              value: 'hidden',
+            },
+            {
+              name: t('command_avatar_option_hidden_choice_visible'),
+              value: 'visible',
+            }
+          )
           .setRequired(false)
       )
       .toJSON()
@@ -37,8 +47,8 @@ export class AvatarCommand {
     ) as GuildMember
 
     const hidden =
-      interaction.options.getBoolean(t('command_avatar_option_hidden_name')) ??
-      false
+      interaction.options.getString(t('command_avatar_option_hidden_name')) ===
+        'hidden' ?? false
 
     let avatarUrl = member.displayAvatarURL({ dynamic: true })
     if (avatarUrl.endsWith('.webp'))

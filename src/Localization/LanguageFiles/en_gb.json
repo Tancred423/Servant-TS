@@ -25,6 +25,8 @@
   "command_avatar_option_user_info": "Select a user.",
   "command_avatar_option_hidden_name": "hidden",
   "command_avatar_option_hidden_info": "Hide the result?",
+  "command_avatar_option_hidden_choice_hidden": "Hidden",
+  "command_avatar_option_hidden_choice_visible": "Publicly visible",
 
   "command_random_name": "random",
   "command_random_info": "A random image of whatever you are choosing.",

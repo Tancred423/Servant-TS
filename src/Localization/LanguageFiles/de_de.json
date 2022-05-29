@@ -25,6 +25,8 @@
   "command_avatar_option_user_info": "Wähle einen Nutzer aus.",
   "command_avatar_option_hidden_name": "versteckt",
   "command_avatar_option_hidden_info": "Ergebnis verstecken?",
+  "command_avatar_option_hidden_choice_hidden": "Versteckt",
+  "command_avatar_option_hidden_choice_visible": "Öffentlich sichtbar",
 
   "command_random_name": "random",
   "command_random_info": "Ein random Bild von was auch immer du dir aussuchst.",
