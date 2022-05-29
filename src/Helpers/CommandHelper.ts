@@ -1,6 +1,8 @@
 import {
+  CacheType,
   Client,
   CommandInteraction,
+  CommandInteractionOptionResolver,
   Guild,
   GuildMember,
   User,
@@ -29,9 +31,7 @@ export interface IDefaultVariables {
 export class CommandHelper {
   public static getOptionsString(
     options: Omit<
-      import('discord.js').CommandInteractionOptionResolver<
-        import('discord.js').CacheType
-      >,
+      CommandInteractionOptionResolver<CacheType>,
       'getMessage' | 'getFocused'
     >
   ): string {

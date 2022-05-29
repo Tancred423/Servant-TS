@@ -41,7 +41,7 @@ export class AvatarCommand {
       false
 
     let avatarUrl = member.displayAvatarURL({ dynamic: true })
-    if (avatarUrl.endsWith('webp'))
+    if (avatarUrl.endsWith('.webp'))
       avatarUrl = avatarUrl.replace('.webp', '.png')
     avatarUrl += '?size=2048'
 
