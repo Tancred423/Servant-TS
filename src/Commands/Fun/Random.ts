@@ -103,7 +103,7 @@ export class RandomCommand {
         t('error_generic', { inviteLink: config.linkSupportServer })
       )
 
-      send({
+      await send({
         ephemeral: true,
         embeds: [errorEmbed],
       })
@@ -128,7 +128,7 @@ export class RandomCommand {
         t('random_imageNotFound', { inviteLink: config.linkSupportServer })
       )
 
-      send({
+      await send({
         embeds: [errorEmbed],
       })
 
@@ -149,7 +149,7 @@ export class RandomCommand {
         iconURL: (await Emotes.get('servantLove'))?.url ?? undefined,
       })
 
-    send({
+    await send({
       embeds: [embed],
     })
   }

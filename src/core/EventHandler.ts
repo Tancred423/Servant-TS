@@ -1,8 +1,11 @@
 import { Client, CommandInteraction } from 'discord.js'
+import moment from 'moment'
 import config from '../config.json'
 import { CommandHelper } from '../Helpers/CommandHelper'
+import { StringHelper } from '../Helpers/StringHelper'
 import { Logger } from '../Logging/Logger'
 import { LogTypes } from '../Logging/LogTypes'
+import { StringBuilder } from '../Utility/StringBuilder'
 import { Bot } from './Bot'
 import { MyClientUser } from './MyClientUser'
 import { MyGuild } from './MyGuild'
@@ -34,24 +37,48 @@ export class EventHandler {
   }
 
   public static async onCommand(interaction: CommandInteraction) {
+    const start = moment()
+
     const { commandName } = interaction
     const defaultVariables = await CommandHelper.getDefaultVariables(
       interaction
     )
+    const { user, guild, guildLanguageKey, t, send } = defaultVariables
 
     try {
-      const commands = Bot.commands.get(defaultVariables.guildLanguageKey)
+      const commands = Bot.commands.get(guildLanguageKey)
       const command = commands?.find(
         (element) => element.data.name === commandName
       )
 
       await command?.execute(interaction, defaultVariables)
+
+      Logger.log(
+        LogTypes.SUCCESS,
+        1653820062,
+        new StringBuilder()
+          .append('Command: "/')
+          .append(commandName)
+          .append(CommandHelper.getOptionsString(interaction.options))
+          .append('" | User: "')
+          .append(StringHelper.getFullUserName(user))
+          .append('" (')
+          .append(user.id)
+          .append(') | Guild: "')
+          .append(guild.name)
+          .append('" (')
+          .append(guild.id)
+          .append(') | Execution time: ')
+          .append(moment().diff(start, 'milliseconds').toString())
+          .append(' ms')
+          .build()
+      )
     } catch (error: any) {
       Logger.log(LogTypes.ERROR, 1653500380, error.message)
 
-      defaultVariables.send({
+      send({
         ephemeral: true,
-        content: defaultVariables.t('error_generic', {
+        content: t('error_generic', {
           inviteLink: `<${config.linkSupportServer}>`,
         }),
       })

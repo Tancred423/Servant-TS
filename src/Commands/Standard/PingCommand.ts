@@ -36,15 +36,15 @@ export class PingCommand {
 
     const start = moment()
 
-    send({
+    await send({
       ephemeral: true,
       embeds: [embed],
-    }).then((_) => {
+    }).then(async (_) => {
       embed.fields[0].value = t('ping_ms', {
         ping: moment().diff(start, 'milliseconds').toString(),
       })
 
-      send({
+      await send({
         ephemeral: true,
         embeds: [embed],
       })

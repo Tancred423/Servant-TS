@@ -1,6 +1,7 @@
 import { Client, Intents } from 'discord.js'
 import 'dotenv/config'
 import { CommandDto } from '../Commands/CommandDto'
+import { AvatarCommand } from '../Commands/Fun/Avatar'
 import { RandomCommand } from '../Commands/Fun/Random'
 import { DashboardCommand } from '../Commands/Standard/DashboardCommand'
 import { DonateCommand } from '../Commands/Standard/DonateCommand'
@@ -31,6 +32,7 @@ export class Bot {
         new CommandDto(PingCommand.getData(t), PingCommand.execute),
 
         // Fun
+        new CommandDto(AvatarCommand.getData(t), AvatarCommand.execute),
         new CommandDto(RandomCommand.getData(t), RandomCommand.execute),
       ])
     }
